@@ -64,22 +64,13 @@
         document.getElementById("drweird").innerHTML = rweird + " ";
       }
     }
-    function saveFeature(save){
-      if (save == 0)
-      {
-        save = 1;
-      }
-      else if (save == 1)
-      {
-        save = 0;
-      }
-    }
+
     
 		document.getElementById("primary").addEventListener("click", generateDate);
-		document.getElementById("drday").addEventListener("click", saveFeature(sday));
-		document.getElementById("drtime").addEventListener("click", saveFeature(stime));
-		document.getElementById("dractivity").addEventListener("click", saveFeature(sactivity));
-		document.getElementById("drweird").addEventListener("click", saveFeature(sweird));
+		document.getElementById("drday").addEventListener("click", function(){if (sday==0){sday=1} else{sday=0}});
+		document.getElementById("drtime").addEventListener("click", function(){if (stime==0){stime=1} else{stime=0}});
+		document.getElementById("dractivity").addEventListener("click", function(){if (sactivity==0){sactivity=1} else{sactivity=0}});
+		document.getElementById("drweird").addEventListener("click", function(){if (sweird==0){sweird=1} else{sweird=0}});
   </script>
 </body>
 </html>
