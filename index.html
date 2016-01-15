@@ -42,10 +42,10 @@
     var sactivity = 0;
     var sweird = 0;
     function generateDate(){
-      var rday = Math.floor ( Math.random() * day.length );
-      var rtime = Math.floor ( Math.random() * time.length );
-      var ractivity = Math.floor ( Math.random() * activity.length );
-      var rweird = Math.floor ( Math.random() * weirdthing.length );
+		var rday = day[Math.floor ( Math.random() * day.length )];
+		var rtime = time[Math.floor ( Math.random() * time.length )];
+		var ractivity = activity[Math.floor ( Math.random() * activity.length )];
+		var rweird = weirdThing[Math.floor ( Math.random() * weirdThing.length )];
       console.log(rday + " " + rtime + ": " + ractivity + " " + rweird)
       if sday == 0
       {
@@ -80,7 +80,6 @@
     document.getElementById("drtime").addEventListener("click", saveFeature(stime));
     document.getElementById("dractivity").addEventListener("click", saveFeature(sactivity));
     document.getElementById("drweird").addEventListener("click", saveFeature(sweird));
-
   </script>
 </body>
 </html>
