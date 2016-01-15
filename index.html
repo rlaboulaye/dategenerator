@@ -17,7 +17,12 @@
       <br/><br/><br/>
       <button role="button" id="primary">Generate an Irresistible Date Idea</button>
       <br/><br/>
-      <h2 id="dateResult"></h2>
+      <div id="dateResult">
+        <h2 id="drday"></h2>
+        <h2 id="drtime"></h2>
+        <h2 id="dractivity"></h2>
+        <h2 id="drweird"></h2>
+      </div>
     </div>
     <audio controls autoplay>
       <source src="music/YoureTheOneINeed.mp3" type="audio/mpeg">
@@ -32,17 +37,50 @@
     var activity = ["Rate fries from different fast food places", "Rock climbing", "Hiking", "Mountain biking", "Road biking", "Ropes course", "Go to the park", "Scuba diving", "Fishing", "Zip lining", "Horseback riding", "Sledding", "Iceblocking", "Bowling", "Ice Skating", "Broom Ball", "Laser tag", "Mini golf", "Arcade games", "Provo Beach Resort", "Archery", "Tandem bike", "Paintball", "Trampoline place", "Country dancing", "Salsa dancing", "Puppies for Rent", "Velour", "a BYU Arts event", "the BYU Museum of Art", "Humor U", "Comedy Sportz", "Divine Comedy", "BYU International Cinema", "Bean Museum", "BYU Planetarium"];
     var weirdThing = ["with Scottish accents", "with British accents", "in pajamas", "wearing goofy hats", "while speaking Pig Latin", "while doing a three legged race", "as a double date", "in ugly sweaters", "blindfolded", "on all fours", "while singing", "wearing a sweatshirt on your legs", "with your hands tied together", "without talking", "with our faces painted", "while talking in the third person", "while talking like Yoda", "while saying the opposite of what we mean", "with writing as our only form of communication", "as Harry Potter characters", "as Lord of the Rings characters", "as Parks and Rec characters", "as a Disney couple", "as historical figures", "as celebrities", "as black and white silent film actors", "as jazzercisers", "while rhyming everything we say", "while acting as if we're in a action movie", "while acting as if we're trying to get away from the paparazzi", "while speaking in song lyrics", "while speaking in movie quotes", "while not using any 'e's", "while doing the Cupid shuffle", "while sticking our tongues out the entire time", "while pretending to be chickens", "while pretending to be cats", "while pretending to be dogs", "while pretending we're fugitives on the run", "while starting a riot"];
     
+    var sday = 0;
+    var stime = 0;
+    var sactivity = 0;
+    var sweird = 0;
     function generateDate(){
       var rday = Math.floor ( Math.random() * day.length );
       var rtime = Math.floor ( Math.random() * time.length );
       var ractivity = Math.floor ( Math.random() * activity.length );
       var rweird = Math.floor ( Math.random() * weirdthing.length );
-      var date = rday + " " + rtime + ": " + ractivity + " " + rweird;
-      document.getElementById("dateResult").innerHTML = date
+      
+      if sday == 0
+      {
+        document.getElementById("drday").innerHTML = rday + " ";
+      }
+      if stime == 0
+      {
+        document.getElementById("drtime").innerHTML = rtime + " ";
+      }
+      if sactivity == 0
+      {
+        document.getElementById("dractivity").innerHTML = ractivity + " ";
+      }
+      if sweird == 0
+      {
+        document.getElementById("drweird").innerHTML = rweird + " ";
+      }
+    }
+    function saveFeature(save){
+      if save == 0
+      {
+        save = 1;
+      }
+      else if save == 1
+      {
+        save = 0;
+      }
     }
     
     document.getElementById("primary").addEventListener("click", generateDate);
-    
+    document.getElementById("drday").addEventListener("click", saveFeature(sday));
+    document.getElementById("drtime").addEventListener("click", saveFeature(stime));
+    document.getElementById("dractivity").addEventListener("click", saveFeature(sactivity));
+    document.getElementById("drweird").addEventListener("click", saveFeature(sweird));
+
   </script>
 </body>
 </html>
