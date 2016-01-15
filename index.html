@@ -46,14 +46,14 @@
       var rtime = Math.floor ( Math.random() * time.length );
       var ractivity = Math.floor ( Math.random() * activity.length );
       var rweird = Math.floor ( Math.random() * weirdthing.length );
-      
+      console.log(rday + " " + rtime + ": " + ractivity + " " + rweird)
       if sday == 0
       {
         document.getElementById("drday").innerHTML = rday + " ";
       }
       if stime == 0
       {
-        document.getElementById("drtime").innerHTML = rtime + " ";
+        document.getElementById("drtime").innerHTML = rtime + ": ";
       }
       if sactivity == 0
       {
