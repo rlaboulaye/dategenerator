@@ -15,7 +15,9 @@
       <br/>
       <h3>The perfect combination to get you some <i>lovin'</i>.</h3>
       <br/><br/><br/>
-      <button role="button" class="btn btn-primary">Generate an Irresistible Date Idea</button>
+      <button role="button" id="primary">Generate an Irresistible Date Idea</button>
+      <br/><br/>
+      <h2 id="dateResult"></h2>
     </div>
     <audio controls autoplay>
       <source src="music/YoureTheOneINeed.mp3" type="audio/mpeg">
@@ -24,7 +26,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script>
-
+    //I'd like to read in the file to make it cleaner, but I'm going to try this for testing to make sure the rest of this works.
+    var day = ["Thursday at", "Friday at", "Saturday at"];
+    var time = ["11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM"];
+    var activity = ["Rate fries from different fast food places", "Rock climbing", "Hiking", "Mountain biking", "Road biking", "Ropes course", "Go to the park", "Scuba diving", "Fishing", "Zip lining", "Horseback riding", "Sledding", "Iceblocking", "Bowling", "Ice Skating", "Broom Ball", "Laser tag", "Mini golf", "Arcade games", "Provo Beach Resort", "Archery", "Tandem bike", "Paintball", "Trampoline place", "Country dancing", "Salsa dancing", "Puppies for Rent", "Velour", "a BYU Arts event", "the BYU Museum of Art", "Humor U", "Comedy Sportz", "Divine Comedy", "BYU International Cinema", "Bean Museum", "BYU Planetarium"];
+    var weirdThing = ["with Scottish accents", "with British accents", "in pajamas", "wearing goofy hats", "while speaking Pig Latin", "while doing a three legged race", "as a double date", "in ugly sweaters", "blindfolded", "on all fours", "while singing", "wearing a sweatshirt on your legs", "with your hands tied together", "without talking", "with our faces painted", "while talking in the third person", "while talking like Yoda", "while saying the opposite of what we mean", "with writing as our only form of communication", "as Harry Potter characters", "as Lord of the Rings characters", "as Parks and Rec characters", "as a Disney couple", "as historical figures", "as celebrities", "as black and white silent film actors", "as jazzercisers", "while rhyming everything we say", "while acting as if we're in a action movie", "while acting as if we're trying to get away from the paparazzi", "while speaking in song lyrics", "while speaking in movie quotes", "while not using any 'e's", "while doing the Cupid shuffle", "while sticking our tongues out the entire time", "while pretending to be chickens", "while pretending to be cats", "while pretending to be dogs", "while pretending we're fugitives on the run", "while starting a riot"];
+    
+    function generateDate(){
+      var rday = Math.floor ( Math.random() * day.length );
+      var rtime = Math.floor ( Math.random() * time.length );
+      var ractivity = Math.floor ( Math.random() * activity.length );
+      var rweird = Math.floor ( Math.random() * weirdthing.length );
+      var date = rday + " " + rtime + ": " + ractivity + " " + rweird;
+      document.getElementById("dateResult").innerHTML = date
+    }
+    
+    document.getElementById("primary").addEventListener("click", generateDate);
+    
   </script>
 </body>
 </html>
