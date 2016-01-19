@@ -9,22 +9,35 @@
   <title>Date Generator</title>
 </head>
 <body>
-  <div class="container-fluid">
-    <div id = "jumbo" class="jumbotron">
+  <div id = "backg" class="container-fluid">
+    <div id = "jumbo" class="jumbotron col-xs-offset-3 col-xs-6">
       <h1>LoveGen</h1>
       <br/>
       <h3>The perfect combination to get you some <i>lovin'</i>.</h3>
       <br/><br/><br/>
-      <button role="button" id="primary">Generate an Irresistible Date Idea</button>
+      <button role="button" id="primary" class="btn btn-primary">Generate an Irresistible Date Idea</button>
       <br/><br/>
-      <div id="dateResult">
-        <h2 id="drday"></h2>
-        <h2 id="drtime"></h2>
-        <h2 id="dractivity"></h2>
-        <h2 id="drweird"></h2>
+      <div class="row">
+        <div id = "dateResult" class="col-xs-offset-2 col-xs-8">
+          <h2 id="drday"></h2>
+          <h2 id="drtime"></h2>
+          <h2 id="dractivity"></h2>
+          <h2 id="drweird"></h2>
+        </div>
+        <div id = "keepButtons" class="col-xs-2">
+          <br/>
+          <button id = "drdaybtn" role="button" class="btn btn-default keep" />Keep</button>
+          <br/>
+          <button id = "drtimebtn" role="button" class="btn btn-default keep" />Keep</button>
+          <br/>
+          <button id = "dractivitybtn" role="button" class="btn btn-default keep" />Keep</button>
+          <br/>
+          <button id = "drweirdbtn" role="button" class="btn btn-default keep" />Keep</button>
+          <br/>
+        </div>
       </div>
     </div>
-    <audio controls autoplay>
+    <audio controls autoplay id = "music">
       <source src="music/YoureTheOneINeed.mp3" type="audio/mpeg">
     </audio>
   </div>
@@ -35,18 +48,23 @@
     var day = ["Thursday at", "Friday at", "Saturday at"];
     var time = ["11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM", "9:00 PM"];
     var activity = ["Rate fries from different fast food places", "Rock climbing", "Hiking", "Mountain biking", "Road biking", "Ropes course", "Go to the park", "Scuba diving", "Fishing", "Zip lining", "Horseback riding", "Sledding", "Iceblocking", "Bowling", "Ice Skating", "Broom Ball", "Laser tag", "Mini golf", "Arcade games", "Provo Beach Resort", "Archery", "Tandem bike", "Paintball", "Trampoline place", "Country dancing", "Salsa dancing", "Puppies for Rent", "Velour", "a BYU Arts event", "the BYU Museum of Art", "Humor U", "Comedy Sportz", "Divine Comedy", "BYU International Cinema", "Bean Museum", "BYU Planetarium"];
-    var weirdThing = ["with Scottish accents", "with British accents", "in pajamas", "wearing goofy hats", "while speaking Pig Latin", "while doing a three legged race", "as a double date", "in ugly sweaters", "blindfolded", "on all fours", "while singing", "wearing a sweatshirt on your legs", "with your hands tied together", "without talking", "with our faces painted", "while talking in the third person", "while talking like Yoda", "while saying the opposite of what we mean", "with writing as our only form of communication", "as Harry Potter characters", "as Lord of the Rings characters", "as Parks and Rec characters", "as a Disney couple", "as historical figures", "as celebrities", "as black and white silent film actors", "as jazzercisers", "while rhyming everything we say", "while acting as if we're in a action movie", "while acting as if we're trying to get away from the paparazzi", "while speaking in song lyrics", "while speaking in movie quotes", "while not using any 'e's", "while doing the Cupid shuffle", "while sticking our tongues out the entire time", "while pretending to be chickens", "while pretending to be cats", "while pretending to be dogs", "while pretending we're fugitives on the run", "while starting a riot"];
-
+    var weirdThing = ["with Scottish accents", "with British accents", "in pajamas", "while wearing goofy hats", "while speaking Pig Latin", "while doing a three legged race", "as a double date", "in ugly sweaters", "while blindfolded", "on all fours", "while singing", "wearing a sweatshirt on your legs", "with your hands tied together", "without talking", "with our faces painted", "while talking in the third person", "while talking like Yoda", "while saying the opposite of what we mean", "with writing as our only form of communication", "as Harry Potter characters", "as Lord of the Rings characters", "as Parks and Rec characters", "as a Disney couple", "as historical figures", "as celebrities", "as black and white silent film actors", "as jazzercisers", "while rhyming everything we say", "while acting as if we're in an action movie", "while acting as if we're trying to get away from the paparazzi", "while speaking in song lyrics", "while speaking in movie quotes", "while not using any 'e's", "while doing the Cupid shuffle", "while sticking our tongues out the entire time", "while pretending to be chickens", "while pretending to be cats", "while pretending to be dogs", "while pretending we're fugitives on the run", "while starting a riot"];
     var sday = 0;
     var stime = 0;
-	var sactivity = 0;
+	  var sactivity = 0;
     var sweird = 0;
     function generateDate(){
 		var rday = day[Math.floor ( Math.random() * day.length )];
 		var rtime = time[Math.floor ( Math.random() * time.length )];
 		var ractivity = activity[Math.floor ( Math.random() * activity.length )];
 		var rweird = weirdThing[Math.floor ( Math.random() * weirdThing.length )];
-     
+    var keepButtons = document.getElementsByClassName("btn btn-default keep");
+
+    for (var iCount = 0; iCount < keepButtons.length; iCount++)
+    {
+      keepButtons[iCount].style.display = "inline";
+    }
+
       if (sday == 0)
       {
         document.getElementById("drday").innerHTML = rday + " ";
@@ -65,12 +83,12 @@
       }
     }
 
-    
 		document.getElementById("primary").addEventListener("click", generateDate);
-		document.getElementById("drday").addEventListener("click", function(){if (sday==0){sday=1} else{sday=0}});
-		document.getElementById("drtime").addEventListener("click", function(){if (stime==0){stime=1} else{stime=0}});
-		document.getElementById("dractivity").addEventListener("click", function(){if (sactivity==0){sactivity=1} else{sactivity=0}});
-		document.getElementById("drweird").addEventListener("click", function(){if (sweird==0){sweird=1} else{sweird=0}});
+
+    document.getElementById("drdaybtn").addEventListener("click", function(){if (sday==0){sday=1; document.getElementById("drdaybtn").innerHTML = "Discard";} else{sday=0; document.getElementById("drdaybtn").innerHTML = "Keep";}});
+		document.getElementById("drtimebtn").addEventListener("click", function(){if (stime==0){stime=1; document.getElementById("drtimebtn").innerHTML = "Discard";} else{stime=0; document.getElementById("drtimebtn").innerHTML = "Keep";}});
+		document.getElementById("dractivitybtn").addEventListener("click", function(){if (sactivity==0){sactivity=1; document.getElementById("dractivitybtn").innerHTML = "Discard";} else{sactivity=0; document.getElementById("dractivitybtn").innerHTML = "Keep";}});
+		document.getElementById("drweirdbtn").addEventListener("click", function(){if (sweird==0){sweird=1; document.getElementById("drweirdbtn").innerHTML = "Discard";} else{sweird=0; document.getElementById("drweirdbtn").innerHTML = "Keep";}});
   </script>
 </body>
 </html>
